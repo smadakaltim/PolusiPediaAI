@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: polusipedia-ai
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_MODEL
+        value: gemini-3.6-flash
+      - key: AI_RATE_LIMIT
+        value: "10"
+      - key: GEMINI_API_KEY
+        sync: false
